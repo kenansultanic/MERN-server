@@ -10,10 +10,10 @@ const users = {
             // TODO(Hash password)
             password: req.body.password,
             // TODO(ADD DEFAULT PFP URL)
-            pfp_url: ''
+            pfp_url: 'default'
         })
         try {
-            const dataToSave = await data.save();
+            const dataToSave = await user.save();
         }
         catch (err) {
             console.log(err)
