@@ -4,7 +4,7 @@ const mongoString = process.env.MONGO_URI
 mongoose.connect(mongoString)
 const database = mongoose.connection
 
-database.on('error', (error) => {
+database.on('error', error => {
     console.log(error)
 })
 
