@@ -29,5 +29,10 @@ router.post('/new-user', async (req, res) => {
     })
 })
 
+router.post('/login-user', async (req, res) => {
+    const users = await User.find({username: req.body.username})
+    console.log(users)
+})
+
 
 module.exports = router
