@@ -29,5 +29,22 @@ router.post('/new-user', async (req, res) => {
     })
 })
 
+router.post('/login-user', async (req, res) => {
+    const user = await User.find({username: req.body.username})
+    if (user.length != 0) {
+        bcrypt.compare(req.body.password,user[0].password,(error,response)=>{
+            if(error) res.status({message: error.message})
+            if(response) {
+                res.status(200).json({message: "Login success"})
+            }else{
+                res.status(403).json({message: "Error! Wrong password"})
+            }
+        })
+    }else{
+        res.status(403).json({message: "Error! Wrong username"})
+    }
+
+})
+
 
 module.exports = router
