@@ -3,6 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const index = require('./routes/index')
 const users = require('./routes/users')
+const messages = require('./routes/messages')
 const app = express();
 
 require('dotenv').config()
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 app.use('/users', users)
+app.use('/messages', messages)
 app.use('/', index)
 
 
