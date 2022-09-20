@@ -46,5 +46,14 @@ router.post('/login-user', async (req, res) => {
 
 })
 
-
+router.get('/all-users', async (req, res) => {
+    try{
+        const users = await User.find({})
+        if(users.length != 0) res.status(200).json(users)
+        else res.status(204).json({message: "Empty list"})
+    }catch(err){
+        res.status(500).json({message: "Error!"})
+    }
+    
+})
 module.exports = router
